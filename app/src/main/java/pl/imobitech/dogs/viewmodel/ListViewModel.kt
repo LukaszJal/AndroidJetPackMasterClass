@@ -22,17 +22,7 @@ class ListViewModel : ViewModel() {
     val loading = MutableLiveData<Boolean>()
 
     fun refresh() {
-       // fetchFromRemote()
         fetchFromRemote()
-       // val dog1 = DogBreed("1","222",",2222","2222","2222","2222","332131")
-       // val dogsList = arrayListOf(dog1,dog1)
-
-       // dogs.value = dogsList
-        //dogs.value = dogs.value.orEmpty() + dogsList
-
-       // dogsLoadError.value = false
-       // loading.value = false
-
     }
 
     private fun fetchFromRemote(){
