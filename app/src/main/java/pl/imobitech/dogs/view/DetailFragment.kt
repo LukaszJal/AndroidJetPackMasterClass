@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_detail.*
 import pl.imobitech.dogs.R
+import pl.imobitech.dogs.util.getProgressDrawable
+import pl.imobitech.dogs.util.loadImage
 import pl.imobitech.dogs.viewmodel.DetailViewModel
 import pl.imobitech.dogs.viewmodel.ListViewModel
 
@@ -30,13 +32,13 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
-        viewModel.fetch()
-
         arguments?.let {
             dogUuid = DetailFragmentArgs.fromBundle(it).dogUuid
         }
+
+        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
+        viewModel.fetch(dogUuid)
+
 
         observeViewModel()
     }
@@ -48,6 +50,7 @@ class DetailFragment : Fragment() {
                 dogPurpose.text = dog.bredFor
                 dogTemperament.text = dog.temperament
                 dogLifespan.text = dog.lifeSpan
+                context?.let { dogImage.loadImage(dog.imageUrl, getProgressDrawable(it)) }
             }
         })
     }

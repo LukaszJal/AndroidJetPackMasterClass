@@ -9,13 +9,13 @@ interface DogDao {
     @Insert
     suspend fun insertAll(vararg dogs: DogBreed): List<Long>
 
-    @Query("SELECT * FORM dogbread")
+    @Query("SELECT * FROM dogbreed")
     suspend fun getAllDogs(): List<DogBreed>
 
-    @Query("SELECT * FROM dogread WHERE uuid = :dogID")
-    suspend fun getDog(dogId : Int): DogBreed
+    @Query("SELECT * FROM dogbreed WHERE uuid = :dogId")
+    suspend fun getDog(dogId: Int): DogBreed
 
-    @Query("DELETE FROM dogbread")
+    @Query("DELETE FROM dogbreed")
     suspend fun deleteAllDogs()
 
 }
