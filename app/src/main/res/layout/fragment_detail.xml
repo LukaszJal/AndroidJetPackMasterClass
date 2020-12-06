@@ -7,13 +7,17 @@
         <variable
             name="dog"
             type="pl.imobitech.dogs.model.DogBreed"/>
+        <variable
+            name="palette"
+            type="pl.imobitech.dogs.model.DogPalette" />
     </data>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.DetailFragment">
+        tools:context=".view.DetailFragment"
+        android:background="@{palette.color}">
 
         <ImageView
             android:id="@+id/dogImage"
@@ -23,7 +27,7 @@
             android:minHeight="200dp"
             android:scaleType="fitCenter"
             android:imageUrl="@{dog.imageUrl}"
-            />
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/dogName"
